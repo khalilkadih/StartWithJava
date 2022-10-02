@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class partei2 {
     static int symbole2index=0;
@@ -30,13 +32,13 @@ public class partei2 {
     public static void pyramid (int hauteur,String symbole1,String symbole2)
     {
 
-            for (int i= hauteur; i>=0 ; i--)
+        Stream.iterate(hauteur, i->i>=0 , i->i-1).forEach(i->
             {
-                for (int j=0; j<=i; j++)
+                IntStream.range(0,i).forEach(j->
                 {
                     System.out.print(" "); //dessinner  les espace a left side
-                }
-                for (int k=0; k<=hauteur-i; k++)
+                });
+                IntStream.range(0,hauteur-i).forEach(k->
                 {
                     if(i%2!=0){
 
@@ -47,9 +49,9 @@ public class partei2 {
                             symbole2index++;
                     }else
                     System.out.print(symbole1+" ");//pour les espace entre les etoile
-                }
+                });
                 System.out.println(" ");
-            }
+            });
 
             int rootWIdth=hauteur*2+1;
             int middle=rootWIdth/2;
